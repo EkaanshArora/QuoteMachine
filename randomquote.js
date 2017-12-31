@@ -1,6 +1,10 @@
 $(document).ready(function() {
   var count = 0;
-  $(".se-pre-con").show();
+  $('#quote-author').hide();
+  $('#quote-author1').hide();
+  $('#quote-content').hide();
+  $('#quote-content1').hide();
+  $(".loader").show();
        $.ajax({
         url: 'https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1',
         success: function(data) {
@@ -10,11 +14,17 @@ $(document).ready(function() {
           var content = post.content.replace(/<\/*p>/g, "");
           $('#quote-content').html('"' + $.trim(content) + '"');
           $('#quote-content1').html('"' + $.trim(content) + '"');
+          $('#quote-author').show();
+          $('#quote-author1').show();
+          $('#quote-content').show();
+          $('#quote-content1').show();
         },
         cache: false
     });
   $("#getQuote").on("click", function(e) {
-    $(".se-pre-con").show();
+    $('#quote-author').hide();
+    $('#quote-content').hide();
+    $(".loader").show();
     var bgArray = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg','6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg'];
     var bg = bgArray[Math.floor(Math.random() * bgArray.length)];
     var path = 'images/';
@@ -27,15 +37,23 @@ $(document).ready(function() {
           $('#quote-author').text("-- " + post.title);
           var content = post.content.replace(/<\/*p>/g, "");
           $('#quote-content').html('"' + $.trim(content) + '"');
-         
         },
         cache: false
     });
-       $(".se-pre-con").fadeOut("slow");
+      $(".loader").fadeOut("slow");
+      $('#quote-author').show();
+      $('#quote-content').show();
   });
-$(".se-pre-con").fadeOut("slow");
+  $(".loader").fadeOut("slow");
   $("#getQuote1").on("click", function(e) {
-    $(".se-pre-con").show();
+  $('#quote-author1').hide();
+  $('#quote-content1').hide();
+  $(".loader").show();
+    var bgArray = ['1.jpg', '2.jpg', '3.jpg', '4.jpg'];
+    var bg = bgArray[Math.floor(Math.random() * bgArray.length)];
+    var path = 'images/p/';
+    var imageUrl = path + bg;
+    $('body').css('background-image', 'url(' + imageUrl +')');
       $.ajax( {
         url: 'https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1',
         success: function(data) {
@@ -46,6 +64,8 @@ $(".se-pre-con").fadeOut("slow");
         },
         cache: false
     });
-       $(".se-pre-con").fadeOut("slow");
+      $(".loader").fadeOut("slow");
+      $('#quote-author1').show();
+      $('#quote-content1').show();
   });
 });
