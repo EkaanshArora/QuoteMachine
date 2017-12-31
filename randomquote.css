@@ -9,7 +9,6 @@ body{
     background-size: cover;
     height: 100%; 
     background-attachment: fixed;
-    overflow: hidden;
 }
 html{
     height: 100%;
@@ -45,14 +44,18 @@ h3{
     border-radius: 5px;
     width: 12vw;
 }
-.se-pre-con {
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    background-color:#fff;
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    margin: auto;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 .btn {
     background: transparent;
@@ -73,7 +76,6 @@ h3{
     border: 3px solid white;
     border-radius: 5px;
     width: 30vw;
-    margin-top: 5px;
 }
 .h22{
     font-family: "basis", "Segoe UI", Helvetica, Arial, sans-serif;
@@ -88,4 +90,39 @@ h3{
     padding-top: 5px;
     font-size: 4vw;
     margin-top: 5px;
+    margin-bottom: 15px;
+}
+.tint{
+    height: 100vh;
+    width: 100vw;
+    background-color: #000;
+    opacity: 0.4;
+    position: absolute;
+    z-index: -1;
+}
+@media screen and (orientation:portrait) {
+    body{
+        background-image: url('images/p/4.jpg');
+    }
+    .loader {
+        border: 9px solid #f3f3f3; /* Light grey */
+        border-top: 9px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: spin 2s linear infinite;
+        margin: auto;
+    }
+}
+@media only screen and (max-width: 1199px)
+{
+    .headtextt{
+        font-size: 6vw;
+    }
+    .h22{
+        font-size: 4vw;
+    }
+    .h33{
+        font-size: 3vw;
+    }
 }
